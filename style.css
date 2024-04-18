@@ -1,0 +1,828 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Playfair Display', serif;
+
+}
+.header{
+    min-height: 100vh;
+    width:100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/background1.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+}
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+nav img{ /*logo*/
+    width: 150px;
+
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{ 
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color:beige;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+.nav-links ul li::after{ /*Tranzitie efect butoane*/
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #EFCE81;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+width: 100%;
+}
+
+.text-box{
+    width: 90%;
+    color: beige;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.text-box h1{ /*Text principal*/
+    font-size: 62px;
+}
+.text-box p{ /*Text secundar*/
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: beige;
+}
+
+.MainMore-btn{ /*Buton citeste mai mult*/
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: 1;
+    border: 1px solid white;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.MainMore-btn:hover{
+    border: 1px solid #857247 ;
+    background: #857247;
+    transition: 1s;
+}
+
+nav .icon{
+    display: none;
+}
+
+@media(max-width: 700px){
+    .text-box h1{ /*Text principal pe ecran mic*/
+        font-size: 20px;
+    }
+    .nav-links ul li{ 
+        display: block;
+    }
+    .nav-links{
+        position: fixed;
+        background: #857247;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+    nav .icon{
+        display: block;
+        color: #ffffff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .nav-links ul{
+        padding: 30px;
+    }
+}
+
+/*---- course ----*/
+
+.course{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+p{
+    color: #777;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-col{
+    flex-basis: 31%;
+    background: #f1e8ce;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.course-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.5);
+}
+
+.MainMore-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    border: 1;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+    font-size: 20px;
+    background: #d6c38d9a;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.MainMore-btn:hover{
+    border: 1px solid #000000 ;
+    background: #8d6472a6;
+    transition: 1s;
+}
+
+
+@media(max-width: 700px){
+    .row{
+        flex-direction: column;
+    }
+}
+
+/*---------------blog-------------*/
+.blog{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+
+.blog-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-col img{
+    width: 100%;
+    display: block;
+}
+
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer:hover{
+    background: rgba(247, 207, 207, 0.7);
+}
+
+.layer h3{
+    width: 100%;
+    font-weight: 500;
+    color: #000000;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.layer:hover h3{
+    bottom: 49%;
+    opacity: 1;
+}
+.MainMore-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    border: 1;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+    font-size: 20px;
+    background: #d6c38d9a;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.MainMore-btn:hover{
+    border: 1px solid #000000 ;
+    background: #8d6472a6;
+    transition: 1s;
+}
+
+
+
+/*----------------Servicii--------------*/
+.servicii{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.servicii-col{
+    flex-basis: 20%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+.servicii-col img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.servicii-col p{
+padding: 0;
+}
+
+.servicii-col h3{
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/*----------------recenzii--------------*/
+.recenzii {
+    padding: 10% 0;
+}
+
+.box-area {
+    padding: 30px;
+    position: relative;
+    display: block;
+    background: #fff;
+    color: #000;
+    box-shadow: rgba(0,0,0,0.35) 0 5px 15px;
+    margin: 40px 0;
+    width: 100% !important;
+}
+
+.box-area h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #857247;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.box-area span {
+    color: #777;
+    display: block;
+    font-size: 13px;
+    margin: 0 0 10px;
+    font-weight: 400;
+}
+
+.box-area .content {
+    color: #262626;
+}
+
+.box-area .img-area {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    right: 0;
+    z-index: 1;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 4px rgba(0,0,0,0.5);
+}
+
+.box-area .img-area img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+
+
+@media(max-width: 700px) {
+    .owl-nav {
+        display: none;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box-area {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .box-area .img-area {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    .recenzii-col {
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 0 15px;
+    }
+}
+
+/*--- call to action ---*/
+
+.cta{
+    margin: 100px auto;
+    width: 80%;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.cta h1{
+    color: #fff;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+@media(max-width:700px){
+    .cta h1{
+        font-size: 24px;
+    }
+
+}
+
+/*-----------footer--------*/
+
+.footer{
+    width:100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer h4{
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.icons .fa{
+    color:#262626;
+    margin: o 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+
+
+
+
+
+
+/*--------- ABOUT ME-------------*/
+.sub-header{
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/background_pensule.PNG);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+
+.sub-header h1{
+    margin-top: 100px;
+}
+
+.sub-header h3{
+    margin-top: 100px;
+}
+
+.about-us{
+    width: 70%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-col{
+    flex-basis: 48%;
+    padding: 30px 2px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.about-col img{
+    width: 100%; 
+    border-radius: 8px;
+}
+ /*----------------------------------------------nu arata bine pe telefon------------------*/
+@media(max-width: 700px){
+    .about-col img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+.about-col:nth-child(2){
+    order: -1;
+}
+
+
+.about-col h1,
+.about-col h3 {
+    padding-top: 10px;
+    margin: 0;
+}
+
+.about-col p {
+    margin-top: 20px;
+}
+
+
+
+
+/*------------------- blog-content -------------------*/
+
+
+.blog_page{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+}
+
+#blog_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+
+.blog_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.blog-heading span{
+    color:lightpink;
+}
+
+.blog-heading h3{
+    font-size: 2.4rem;
+    color: #262626;
+    font-weight: 600;
+}
+
+.blog-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+}
+
+.blog-box{
+    width: 350px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    margin: 20px;
+}
+
+.blog-img{
+    width: 100%;
+    height: auto;
+}
+
+.blog-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blog-text{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-text span{
+    color: lightpink;
+    font-size: 0.9rem;
+}
+
+.blog-text .blog-title{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #272727;
+}
+
+.blog-text .blog-title:hover{
+    color: lightpink;
+    transition: all ease 0.3s;
+}
+
+.blog-text p{
+    color: #9b9b9b;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 0px;
+}
+
+.blog-text a{
+    color: #0F0F0F;
+
+}
+
+.blog-text a:hover{
+    color: lightpink;
+    transition: all ease 0.3s;
+}
+
+@media(max-width: 700px){
+    .blog-box{
+        width: 300px;
+
+    }
+}
+
+
+/*---------------------Introducere------------------*/
+.introducere {  
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+
+   .introducere h1{
+        font-size: 36px;
+        font-weight: 600;
+    }
+    
+    .introducere p{
+        color: #777;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 22px;
+        padding: 10px;
+    }
+    
+    
+   .introducere h3{
+        text-align: center;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+/*-------------------Bloguri scrise  -------------------*/
+
+
+.bloguri_scrise {  
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    padding-top: 100px;
+}
+
+
+   .bloguri_scrise h1{
+        font-size: 36px;
+        font-weight: 600;
+    }
+    
+    .bloguri_scrise p{
+        color: #777;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 22px;
+        padding: 10px;
+    }
+    
+    
+   .bloguri_scrise h6{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    .bloguri_scrise h5{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    .bloguri_scrise h4{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    .bloguri_scrise h3{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    .bloguri_scrise h2{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    .bloguri_scrise  h1{
+        text-align: left;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+
+    .video-container {
+        width: 100%;
+        position: relative;
+        padding-bottom: 56.25%; /* Raportul de aspect 16:9 pentru a păstra proporțiile */
+        overflow: hidden;
+    }
+    
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none; 
+    }
+    
+    .back-button {
+        background-color: rgb(104, 60, 91);
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+      }
+      
+    
+      
+
+
+
+/*----------------------- Contact ---------------------*/
+.location{
+    width: 80%;
+    margin: auto;
+    padding: 80px 0;
+}
+
+.location iframe{
+    width: 100%;
+}
+
+.contact-us{
+    width: 80%;
+    margin: auto;
+}
+
+.contact-col{
+flex-basis: 48%;
+margin-bottom: 30px;;
+}
+
+.contact-col div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.contact-col div .fa{
+    font-size: 28px;
+    color: #857247;
+    margin: 10px;
+    margin-right: 30px;
+}
+
+.contact-col div p{
+    padding: 0;
+}
+
+.contact-col div h5{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #777;
+    font-weight: 400;
+}
+
+.contact-col input, .contact-col textarea{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
