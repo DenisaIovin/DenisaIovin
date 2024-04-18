@@ -826,3 +826,100 @@ margin-bottom: 30px;;
 }
 
 
+/*-------------------------login--------------------*/
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 600px; /* Ajustează lățimea maximă a formularului */
+    margin: 0 auto; /* Aliniază wrapper-ul pe centrul paginii */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center; /* Aliniază conținutul la centru */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinează elementele copil pe axa orizontală (centrat) */
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.input-box {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.box-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #777;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #6e2f92;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #af3ebe;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #777;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
