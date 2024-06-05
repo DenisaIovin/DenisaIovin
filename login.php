@@ -1,45 +1,48 @@
 <?php
-$servername = "webdb";
-$username = "admin";
-$password = "parola";
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "denisa13";
 $database = "users_db";
+$port = 3306;
 
-// Creare conexiune cu bd
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
-// Verificare conexiune
 if ($conn->connect_error) {
     die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
 }
 
-// Verificăm dacă sunt date POST trimise către script
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obținem datele din formularul trimis
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];
 
-    // Interogare pentru a găsi utilizatorul în baza de date
-    $sql = "SELECT * FROM users WHERE username='$input_username'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM users WHERE username=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $input_username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Utilizatorul există în baza de date
         $user = $result->fetch_assoc();
-        
-        // Verificăm parola
+    
+        echo "Parola din formular: " . $input_password . "<br>";
+        echo "Parola din baza de date: " . $user['password'] . "<br>";
+    
         if (password_verify($input_password, $user['password'])) {
-            // Autentificare reușită
-            echo "Autentificare reușită pentru utilizator: " . $user['username'];
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_id'] = $user['id'];
+            header("Location: index.html");
+            exit;
         } else {
-            // Parolă incorectă
             echo "Parolă incorectă.";
         }
     } else {
-        // Utilizatorul nu există în baza de date
         echo "Utilizatorul nu există.";
     }
+    
 }
 
-// Închide conexiunea
 $conn->close();
 ?>

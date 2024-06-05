@@ -1,109 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <title>Denisa Iovin - Make-up Artist & Make-up Trainer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/page_icon.PNG">
+</head>
+<body>
+<section class="sub-header">
+    <nav>
+        <a href="index.html"><img src="images/logo_Alb.PNG"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa-solid fa-xmark icon" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre mine</a></li>
+                <li><a href="course.html">Cursuri</a></li>
+                <li><a href="services.php">Servicii</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="account.php">Contul meu</a></li>
+            </ul>
+        </div>
+        <i class="fa-solid fa-bars icon" onclick="showMenu()"></i>
+    </nav>
+</section>
 
-        <title>Denisa Iovin - Make-up Artist & Make-up Trainer</title>
-        <link rel="stylesheet" href="style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-        <link rel="shortcut icon" href="images/page_icon.PNG">
-
-        
-
-        </head>
-            
-            <body>
-            <section class="sub-header">
-                <nav>
-                    <a href="index.html"><img src="images/logo_Alb.PNG"></a>
-                    <div class="nav-links" id="navLinks">
-                        <i class="fa-solid fa-xmark icon" onclick="hideMenu()"></i>
-                        <ul>
-                            <li><a href="index.html">Acasă</a></li>
-                            <li><a href="about.html">Despre mine</a></li>
-                            <li><a href="course.html">Cursuri</a></li>
-                            <li><a href="services.html">Servicii</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            
-                        </ul>
-                    </div>
-                    <i class="fa-solid fa-bars icon" onclick="showMenu()"></i>
-                </nav>
-            </section>
-                
 <div class="wrapper">
-    <form id="loginForm">
+    <form id="loginForm" action="login.php" method="POST">
         <h1>Intră în cont</h1>
         <div class="input-box">
             <input type="text" placeholder="Utilizator" name="username" required>
             <box-icon type='solid' name='user'></box-icon>
         </div>
-    
         <div class="input-box">
             <input type="password" placeholder="Parolă" name="password" required>
             <box-icon name='lock-alt' type='solid'></box-icon>
         </div>
-    
         <div class="remember-forgot">
             <label><input type="checkbox">Ține minte datele</label>
             <a href="#">Am uitat parola</a>
         </div>
-    
         <button type="submit" class="btn">Intră în cont</button>
-    
         <div class="register-link">
-            <p>Nu ai cont? <a href="#">Înregistrează-te</a></p>
+            <p>Nu ai cont? <a href="register.html">Înregistrează-te</a></p>
         </div>
     </form>
-    
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Oprește acțiunea implicită a formularului
-    
-            // Obține datele din formular
-            const formData = new FormData(this);
-    
-            // Trimite datele către login.php folosind fetch API
-            fetch('login.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                // Afisează răspunsul primit de la server
-                console.log(data);
-                // Aici poți face orice alte acțiuni în funcție de răspunsul primit
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
+</div>
 
- 
-
-
-
-
-
-
-
-
-
-
-        </body>
-
+</body>
 </html>

@@ -279,9 +279,7 @@ h3{
     transition: 1s;
 }
 
-
-
-/*----------------Servicii--------------*/
+/*----------------Servici-Index----------*/
 .servicii{
     width: 80%;
     margin: auto;
@@ -311,6 +309,64 @@ padding: 0;
     text-align: left;
 }
 
+/*----------------Servicii Pagina--------------*/
+.servicii_page {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.servicii_page-col {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.servicii_page-col img {
+    width: 25%;
+    height: auto; 
+    border-radius: 10px;
+}
+
+.servicii_page-text {
+    margin-left: 20px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.servicii_page-col h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.servicii_page-col p {
+    padding: 0;
+    margin-bottom: 10px; 
+}
+
+.done-btn-servicii {
+    display: block;
+    margin: 10px auto; 
+    padding: 10px 20px;
+    background-color: #000; 
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 2px solid #000; 
+}
+
+.done-btn-servicii:hover {
+    background-color: #8b5992; 
+    border-color: #8b5992; 
+}
 /*----------------recenzii--------------*/
 .recenzii {
     padding: 10% 0;
@@ -922,4 +978,117 @@ input {
 
 .register-link a:hover {
     text-decoration: underline;
+}
+
+
+/*--------------------------------Editare informatii utilizator-----------------*/
+.wrapper_edit {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.wrapper_edit h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.wrapper_edit form {
+    display: flex;
+    flex-direction: column;
+}
+.wrapper_edit label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+.wrapper_edit input[type="text"],
+.wrapper_edit input[type="email"],
+.wrapper_edit input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.wrapper_edit .done-btn {
+    padding: 10px 20px;
+    background-color: #8b5992;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.wrapper_edit .done-btn:hover {
+    background-color: #6b4272;
+}
+.wrapper_edit .back-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #000;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.wrapper_edit .back-btn:hover {
+    background-color: #aaa;
+}
+
+/*-------------------vizualizare informatii account------------*/
+
+.account-container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px 0;
+}
+.account-info {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+.account-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.account-info p strong {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+.account-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.done-btn {
+    padding: 10px 20px;
+    background-color: #000; 
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+.done-btn:hover {
+    background-color: #8b5992; 
+}
+/*-------------------------mesaj de eroare---------------*/
+.error-box {
+    border: 2px solid #ff0000;
+    background-color: #ffeeee;
+    color: #ff0000;
+    padding: 10px;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
 }

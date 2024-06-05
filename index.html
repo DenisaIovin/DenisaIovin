@@ -40,10 +40,11 @@
                             <li><a href="index.html">Acasă</a></li>
                             <li><a href="about.html">Despre mine</a></li>
                             <li><a href="course.html">Cursuri</a></li>
-                            <li><a href="services.html">Servicii</a></li>
+                            <li><a href="services.php">Servicii</a></li>
                             <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="login.html">Autentificare</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                            <li><a href="account.php">Contul meu</a></li>
+
                             
                         </ul>
                     </div>
@@ -118,14 +119,11 @@
             <p>Laminarea este un proces ideal pentru persoanele care își doresc să păstreze
                 naturalețea. Prin această metodă, genele și sprâncenele tale vor
                  arăta stilizate chiar și după 6 săptămâni.</p>
-         </div>
+        </div>
                  
-        <a href="services.html" class="MainMore-btn done-btn">Află mai multe despre servicii.</a>
+        <a href="services.php" class="MainMore-btn done-btn">Află mai multe despre servicii.</a>
     </div>
-
 </section>
-
-
   <!-----------------------Sectiune de Blog------------------------->
 
 <section class="blog">
@@ -317,10 +315,11 @@
 
 <section class="cta">
     <h1>Programează-te acum pentru serviciul dorit!</h1>
-    <a href="contact.html" class="MainMore-btn">Contactează-mă acum!</a>
+    <a href="contact.php" class="MainMore-btn">Contactează-mă acum!</a>
 </section>
 
-
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/ecfd2f6e-0d84-4ddb-a0a7-e181f150ec37/webchat/config.js" defer></script>
 <!--Footer-->
 <section class="footer">
     <h4>Despre mine</h4>
@@ -333,6 +332,15 @@
         <i class="fa fa-tiktok"></i>
     </div>
 </section>
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    // Utilizatorul este autentificat, deci afișăm secțiunile relevante pentru contul său
+    // Aici poți include secțiunea pentru editarea contului și alte elemente relevante
+} else {
+    // Utilizatorul nu este autentificat, deci afișăm secțiunea de autentificare
+    include("login.html");
+}
+?>
 
 <!--------------JavaScript pentru Toggle Menu----------->
 <script>

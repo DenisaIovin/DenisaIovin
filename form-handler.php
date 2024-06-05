@@ -1,27 +1,52 @@
 <?php
-$name = $_POST['name'];
-$visitor_email = $_POST['email'];
-$subject = $_POST['subject'];
-$message = $_POST['message'];
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$email_from = 'emailtest@gmail.com';
+require 'vendor/autoload.php';
 
-$email_subject = 'New Form Submission';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $visitor_email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-$email_body = "User Name: $name.\n".
-                "User Email: $visitor_email.\n".
-                "User Subject: $subject.\n".
-                "User Message: $mwssage.\n";
+    if ($name && $visitor_email && $subject && $message) {
+        $mail = new PHPMailer(true);
+        
+        try {
+            // Configurați setările serverului SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.mail.yahoo.com'; // Host SMTP
+            $mail->SMTPAuth = true;
+            $mail->Username = 'denisaiovin13@yahoo.com'; // Nume utilizator SMTP
+            $mail->Password = '$IDVmua13!'; // Parolă de aplicație
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
+            // Modul de depanare
+            $mail->SMTPDebug = 2; // Setează la 0 pentru dezactivare, 2 pentru informații detaliate de depanare
+            $mail->Debugoutput = 'html'; // Modul de afișare a mesajelor de debug
 
-$to = 'iovindenisa.v@gmail.com';
+            // Destinatar și expeditor
+            $mail->setFrom('emailtest@gmail.com', 'Mailer');
+            $mail->addAddress('denisaiovin13@yahoo.com'); // Adresa destinatar
 
-$headers = "From: $email_from \r\n";
+            // Conținutul emailului
+            $mail->isHTML(true);
+            $mail->Subject = 'New Form Submission';
+            $mail->Body = "User Name: $name.<br>User Email: $visitor_email.<br>User Subject: $subject.<br>User Message: $message.<br>";
+            $mail->AltBody = "User Name: $name.\nUser Email: $visitor_email.\nUser Subject: $subject.\nUser Message: $message.\n";
 
-$headers .="Reply-To: $visitor_email \r\n";
+            $mail->send();
+            header("Location: contact.php?status=success");
+        } catch (Exception $e) {
+            echo "Mesajul nu a putut fi trimis. Eroare: {$mail->ErrorInfo}";
+        }
+    } else {
+        header("Location: contact.php?status=validation_error");
+    }
+    exit();
+}
 
-mail($to,$email_subject,$email_body,$headers)
-
-header("Location: contact.html");
 
 ?>
