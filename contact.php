@@ -1,3 +1,47 @@
+<?php
+// Codul PHP pentru afișarea mesajelor
+session_start();
+    if(isset($_SESSION['loggedin']) && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+        // Conectare la baza de date
+        $servername = "localhost";
+        $username = "root";
+        $password = "denisa13";
+        $database = "users_db";
+        $port = 3306;
+
+        $conn = new mysqli($servername, $username, $password, $database, $port);
+
+        if ($conn->connect_error) {
+            die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
+        }
+
+        // Interogare pentru a obține toate mesajele
+        $sql = "SELECT * FROM messages ORDER BY created_at DESC";
+        $result = $conn->query($sql);
+
+        // Afisare mesaje, similar cu exemplul anterior
+        if ($result->num_rows > 0) {
+            // Afisarea mesajelor
+            echo "<h2>Mesaje trimise:</h2>";
+            while($row = $result->fetch_assoc()) {
+                // Afisare detalii mesaj
+                echo "<div class='message'>";
+                echo "<p><strong>Nume:</strong> " . htmlspecialchars($row['name']) . "</p>";
+                echo "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) . "</p>";
+                echo "<p><strong>Subiect:</strong> " . htmlspecialchars($row['subject']) . "</p>";
+                echo "<p><strong>Mesaj:</strong> " . htmlspecialchars($row['message']) . "</p>";
+                echo "<p><strong>Data trimiterii:</strong> " . $row['created_at'] . "</p>";
+                echo "</div>";
+            }
+        } else {
+            // Afisare mesaj în cazul în care nu există mesaje
+            echo "<p>Nu există mesaje trimise momentan.</p>";
+        }
+
+        // Închiderea conexiunii cu baza de date
+        $conn->close();
+    }
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,101 +63,101 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
-    <section class="sub-header">
-        <nav>
-            <a href="index.html"><img src="images/logo_Alb.PNG"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa-solid fa-xmark icon" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">Acasă</a></li>
-                    <li><a href="about.html">Despre mine</a></li>
-                    <li><a href="course.html">Cursuri</a></li>
-                    <li><a href="services.php">Servicii</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="account.php">Contul meu</a></li>
-                </ul>
-            </div>
-            <i class="fa-solid fa-bars icon" onclick="showMenu()"></i>
-        </nav>
-        <h1>Contact</h1>
-    </section>
+<section class="sub-header">
+    <nav>
+        <a href="index.html"><img src="images/logo_Alb.PNG"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa-solid fa-xmark icon" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre mine</a></li>
+                <li><a href="course.html">Cursuri</a></li>
+                <li><a href="services.php">Servicii</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="account.php">Contul meu</a></li>
+            </ul>
+        </div>
+        <i class="fa-solid fa-bars icon" onclick="showMenu()"></i>
+    </nav>
+    <h1>Contact</h1>
+</section>
 
-    <section class="location">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d696.251454820315!2d21.244580959349324!3d45.73097810916269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d8c3d6bca37%3A0x4a9a1f602438df52!2sSalon%20Carina%20Munteanu!5e0!3m2!1sen!2sro!4v1709571192905!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
+<section class="location">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d696.251454820315!2d21.244580959349324!3d45.73097810916269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d8c3d6bca37%3A0x4a9a1f602438df52!2sSalon%20Carina%20Munteanu!5e0!3m2!1sen!2sro!4v1709571192905!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
 
-    <section class="contact-us">
-        <div class="row">
-            <div class="contact-col">
-                <div>
-                    <i class="fa fa-home"></i>
-                    <span>
-                        <h5>Str. Mareșal Constantin Prezan 140</h5>
-                        <p>Timisoara, Romania, EU</p>
-                    </span>
-                </div>
-                <div>
-                    <i class="fa fa-phone"></i>
-                    <span>
-                        <h5>+4 0758 808 848</h5>
-                        <p>Luni-Duminica 8:00 - 18:00 </p>
-                    </span>
-                </div>
-                <div>
-                    <i class="fa fa-envelope-o"></i>
-                    <span>
-                        <h5>denisaiovin13@yahoo.com</h5>
-                        <p>Contacteaza-ma prin email! </p>
-                    </span>
-                </div>
+<section class="contact-us">
+    <div class="row">
+        <div class="contact-col">
+            <div>
+                <i class="fa fa-home"></i>
+                <span>
+                    <h5>Str. Mareșal Constantin Prezan 140</h5>
+                    <p>Timisoara, Romania, EU</p>
+                </span>
             </div>
-            <div class="contact-col">
-                <form action="form-handler.php" method="post" onsubmit="return validateForm()">
-                    <input type="text" name="name" placeholder="Numele tau" required>  
-                    <input type="email" name="email" placeholder="Adresa de email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">  
-                    <input type="text" name="subject" placeholder="Subiect" required>  
-                    <textarea rows="8" name="message" placeholder="Mesaj" required></textarea> 
-                    <button type="submit" class="MainMore-btn">Trimite mesajul</button>
-                </form>
-                <div id="form-status">
-                    <?php
-                    if (isset($_GET['status'])) {
-                        if ($_GET['status'] == 'success') {
-                            echo "<p>Mesajul a fost trimis cu succes!</p>";
-                        } elseif ($_GET['status'] == 'error') {
-                            echo "<p>Eroare la trimiterea mesajului. Te rugăm să încerci din nou.</p>";
-                        } elseif ($_GET['status'] == 'invalid') {
-                            echo "<p>Formular invalid. Verifică informațiile și încearcă din nou.</p>";
-                        }
+            <div>
+                <i class="fa fa-phone"></i>
+                <span>
+                    <h5>+4 0758 808 848</h5>
+                    <p>Luni-Duminica 8:00 - 18:00 </p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-envelope-o"></i>
+                <span>
+                    <h5>denisaiovin13@yahoo.com</h5>
+                    <p>Contacteaza-ma prin email! </p>
+                </span>
+            </div>
+        </div>
+        <div class="contact-col">
+            <form action="form-handler.php" method="post" onsubmit="return validateForm()">
+                <input type="text" name="name" placeholder="Numele tau" required>  
+                <input type="email" name="email" placeholder="Adresa de email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">  
+                <input type="text" name="subject" placeholder="Subiect" required>  
+                <textarea rows="8" name="message" placeholder="Mesaj" required></textarea> 
+                <button type="submit" class="MainMore-btn">Trimite mesajul</button>
+            </form>
+            <div id="form-status">
+                <?php
+                if (isset($_GET['status'])) {
+                    if ($_GET['status'] == 'success') {
+                        echo "<p>Mesajul a fost trimis cu succes!</p>";
+                    } elseif ($_GET['status'] == 'error') {
+                        echo "<p>Eroare la trimiterea mesajului. Te rugăm să încerci din nou.</p>";
+                    } elseif ($_GET['status'] == 'invalid') {
+                        echo "<p>Formular invalid. Verifică informațiile și încearcă din nou.</p>";
                     }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="footer">
-        <h4>Despre mine</h4>
-        <p>Îmi doresc să fac cat mai multe femei să se simtă frumoase și încrezătoare,
-        <br>iar dacă simți că rezonezi cu mine, aștept să mă contactezi.
-        </p>
-        <div class="icons">
-            <i class="fa fa-facebook"></i>
-            <i class="fa fa-instagram"></i>
-        </div>
-    </section>
+<section class="footer">
+    <h4>Despre mine</h4>
+    <p>Îmi doresc să fac cat mai multe femei să se simtă frumoase și încrezătoare,
+    <br>iar dacă simți că rezonezi cu mine, aștept să mă contactezi.
+    </p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-instagram"></i>
+    </div>
+</section>
 
-    <script>
-        function validateForm() {
-            const email = document.querySelector('input[name="email"]').value;
-            const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address in the format: example@domain.com");
-                return false;
-            }
-            return true;
+<script>
+    function validateForm() {
+        const email = document.querySelector('input[name="email"]').value;
+        const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address in the format: example@domain.com");
+            return false;
         }
-    </script>
+        return true;
+    }
+</script>
 </body>
 </html>
