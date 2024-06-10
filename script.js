@@ -1,9 +1,11 @@
-
 document.addEventListener("DOMContentLoaded", function() {
-    // Verificăm dacă utilizatorul este autentificat sau nu
-    var isLoggedIn = <?php echo isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true ? 'true' : 'false'; ?>;
+    // Obține valoarea din elementul HTML
+    var isLoggedIn = document.getElementById("isLoggedIn").value;
 
-    // Dacă utilizatorul este autentificat, ascundem butonul de autentificare
+    // Convertește valoarea la tip boolean
+    isLoggedIn = (isLoggedIn === 'true');
+
+    // Dacă utilizatorul este autentificat, ascunde butonul de autentificare
     if (isLoggedIn) {
         var authButton = document.getElementById("authButton");
         if (authButton) {

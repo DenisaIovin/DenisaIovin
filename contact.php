@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denisa Iovin - Make-up Artist & Make-up Trainer</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
     <link rel="shortcut icon" href="images/page_icon.PNG">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <section class="sub-header">
@@ -39,7 +38,7 @@
         </nav>
         <h1>Contact</h1>
     </section>
-                
+
     <section class="location">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d696.251454820315!2d21.244580959349324!3d45.73097810916269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d8c3d6bca37%3A0x4a9a1f602438df52!2sSalon%20Carina%20Munteanu!5e0!3m2!1sen!2sro!4v1709571192905!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
@@ -75,7 +74,7 @@
                     <input type="email" name="email" placeholder="Adresa de email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">  
                     <input type="text" name="subject" placeholder="Subiect" required>  
                     <textarea rows="8" name="message" placeholder="Mesaj" required></textarea> 
-                    <button type="submit" class="MainMore-btn" done-btn>Trimite mesajul</button>
+                    <button type="submit" class="MainMore-btn">Trimite mesajul</button>
                 </form>
                 <div id="form-status">
                     <?php
@@ -94,8 +93,6 @@
         </div>
     </section>
 
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-    <script src="https://mediafiles.botpress.cloud/ecfd2f6e-0d84-4ddb-a0a7-e181f150ec37/webchat/config.js" defer></script>
     <section class="footer">
         <h4>Despre mine</h4>
         <p>Îmi doresc să fac cat mai multe femei să se simtă frumoase și încrezătoare,

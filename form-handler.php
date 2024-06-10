@@ -4,6 +4,11 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
+// Activează raportarea erorilor
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $visitor_email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -12,23 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($name && $visitor_email && $subject && $message) {
         $mail = new PHPMailer(true);
-        
+
         try {
             // Configurați setările serverului SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.mail.yahoo.com'; // Host SMTP
             $mail->SMTPAuth = true;
             $mail->Username = 'denisaiovin13@yahoo.com'; // Nume utilizator SMTP
-            $mail->Password = '$IDVmua13!'; // Parolă de aplicație
+            $mail->Password = 'rjlzuibtcctkzqmc'; // Parolă de aplicație
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            // Modul de depanare
-            $mail->SMTPDebug = 2; // Setează la 0 pentru dezactivare, 2 pentru informații detaliate de depanare
-            $mail->Debugoutput = 'html'; // Modul de afișare a mesajelor de debug
-
             // Destinatar și expeditor
-            $mail->setFrom('emailtest@gmail.com', 'Mailer');
+            $mail->setFrom('denisaiovin13@yahoo.com', 'Mailer');
             $mail->addAddress('denisaiovin13@yahoo.com'); // Adresa destinatar
 
             // Conținutul emailului
@@ -40,13 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->send();
             header("Location: contact.php?status=success");
         } catch (Exception $e) {
-            echo "Mesajul nu a putut fi trimis. Eroare: {$mail->ErrorInfo}";
+            error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+            header("Location: contact.php?status=error");
         }
     } else {
-        header("Location: contact.php?status=validation_error");
+        header("Location: contact.php?status=invalid");
     }
     exit();
+} else {
+    header("Location: contact.php");
+    exit();
 }
-
-
-?>
