@@ -1,47 +1,16 @@
 <?php
-// Codul PHP pentru afișarea mesajelor
 session_start();
-    if(isset($_SESSION['loggedin']) && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-        // Conectare la baza de date
-        $servername = "localhost";
-        $username = "root";
-        $password = "denisa13";
-        $database = "users_db";
-        $port = 3306;
 
-        $conn = new mysqli($servername, $username, $password, $database, $port);
-
-        if ($conn->connect_error) {
-            die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
-        }
-
-        // Interogare pentru a obține toate mesajele
-        $sql = "SELECT * FROM messages ORDER BY created_at DESC";
-        $result = $conn->query($sql);
-
-        // Afisare mesaje, similar cu exemplul anterior
-        if ($result->num_rows > 0) {
-            // Afisarea mesajelor
-            echo "<h2>Mesaje trimise:</h2>";
-            while($row = $result->fetch_assoc()) {
-                // Afisare detalii mesaj
-                echo "<div class='message'>";
-                echo "<p><strong>Nume:</strong> " . htmlspecialchars($row['name']) . "</p>";
-                echo "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) . "</p>";
-                echo "<p><strong>Subiect:</strong> " . htmlspecialchars($row['subject']) . "</p>";
-                echo "<p><strong>Mesaj:</strong> " . htmlspecialchars($row['message']) . "</p>";
-                echo "<p><strong>Data trimiterii:</strong> " . $row['created_at'] . "</p>";
-                echo "</div>";
-            }
-        } else {
-            // Afisare mesaj în cazul în care nu există mesaje
-            echo "<p>Nu există mesaje trimise momentan.</p>";
-        }
-
-        // Închiderea conexiunii cu baza de date
-        $conn->close();
-    }
-    ?>
+// Verificarea autentificării
+if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] === 'admin' && $_POST['password'] === 'parola') {
+    // Setarea variabilelor de sesiune pentru autentificare
+    $_SESSION['loggedin'] = true;
+    $_SESSION['username'] = 'admin'; // Setarea numelui de utilizator în sesiune
+    $_SESSION['password'] = 'parola'; // Setarea parolei în sesiune
+    header("Location: pagina_de_start.php"); // Redirecționarea către pagina de start după autentificare
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +42,7 @@ session_start();
                 <li><a href="about.html">Despre mine</a></li>
                 <li><a href="course.html">Cursuri</a></li>
                 <li><a href="services.php">Servicii</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.php">Blog</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="account.php">Contul meu</a></li>
             </ul>
@@ -87,6 +56,8 @@ session_start();
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d696.251454820315!2d21.244580959349324!3d45.73097810916269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d8c3d6bca37%3A0x4a9a1f602438df52!2sSalon%20Carina%20Munteanu!5e0!3m2!1sen!2sro!4v1709571192905!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
+
+</section>
 <section class="contact-us">
     <div class="row">
         <div class="contact-col">
@@ -134,9 +105,19 @@ session_start();
                 ?>
             </div>
         </div>
+
     </div>
+
 </section>
 
+<?php
+    // Verificăm dacă utilizatorul este autentificat ca admin
+    if(isset($_SESSION['loggedin']) && isset($_SESSION['username']) && isset($_SESSION['password']) && $_SESSION['username'] === 'admin' && $_SESSION['password'] === 'parola') {
+        // Dacă utilizatorul este autentificat ca admin, afișăm butonul
+        echo '<a href="messages.php" class="MainMore-btn done-btn">Vezi Mesajele</a>';
+    }
+    ?>
+    
 <section class="footer">
     <h4>Despre mine</h4>
     <p>Îmi doresc să fac cat mai multe femei să se simtă frumoase și încrezătoare,
@@ -147,7 +128,6 @@ session_start();
         <i class="fa fa-instagram"></i>
     </div>
 </section>
-
 <script>
     function validateForm() {
         const email = document.querySelector('input[name="email"]').value;

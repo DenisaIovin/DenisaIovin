@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("is", $user_id, $comment);
     $stmt->execute();
 
-    header("Location: blog.html");
+    header("Location: blog.php");
     exit;
 }
 

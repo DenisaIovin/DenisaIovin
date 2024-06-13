@@ -50,7 +50,7 @@ $conn->close();
                 <li><a href="about.html">Despre mine</a></li>
                 <li><a href="course.html">Cursuri</a></li>
                 <li><a href="services.php">Servicii</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.php">Blog</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="account.php">Contul meu</a></li>
             </ul>
