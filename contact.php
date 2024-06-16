@@ -110,6 +110,9 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] 
 
 </section>
 
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/ecfd2f6e-0d84-4ddb-a0a7-e181f150ec37/webchat/config.js" defer></script>
+
 <?php
     // Verificăm dacă utilizatorul este autentificat ca admin
     if(isset($_SESSION['loggedin']) && isset($_SESSION['username']) && isset($_SESSION['password']) && $_SESSION['username'] === 'admin' && $_SESSION['password'] === 'parola') {
