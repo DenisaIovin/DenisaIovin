@@ -185,21 +185,7 @@ $conn->close();
         </div>
 
 
-        <!--box 5-->
-        <div class="blog-box">
-            <!--img-->
-            <div class="blog-img">
-                <img src="images/demachierea_si_ingrijirea_tenului.png" alt="Blog">
-            </div>
-
-            <!--text-->
-            <div class="blog-text">
-                <span>19 Martie 2024 / Demachierea și îngrijirea tenului</span>
-                <a href="#" class="blog-title">Cum să îți îngrijești corect tenul.</a>
-                <p>Am pregătit pentru tine 10 sfaturi pentru a te bucura de o versiune îmbunătățită a pielii tale.</p>
-                <a href="#">Citește mai multe</a>
-            </div>
-        </div>
+        
     </div>
 </section>
 
