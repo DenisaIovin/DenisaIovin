@@ -24,7 +24,7 @@ if ($conn->connect_error) {
     die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
 }
 
-// Obțineți mesajele din baza de date
+
 $sql = "SELECT * FROM messages";
 $result = $conn->query($sql);
 
@@ -65,6 +65,5 @@ $result = $conn->query($sql);
 </html>
 
 <?php
-// Închideți conexiunea la baza de date
 $conn->close();
 ?>

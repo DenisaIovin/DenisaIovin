@@ -3,7 +3,6 @@ session_start();
 
 // Verificarea autentificării
 if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] === 'admin' && $_POST['password'] === 'parola') {
-    // Setarea variabilelor de sesiune pentru autentificare
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = 'admin'; // Setarea numelui de utilizator în sesiune
     $_SESSION['password'] = 'parola'; // Setarea parolei în sesiune
@@ -136,7 +135,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] 
         const email = document.querySelector('input[name="email"]').value;
         const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
         if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address in the format: example@domain.com");
+            alert("Adresa de email trebuie sa respecte acest format: example@domain.com");
             return false;
         }
         return true;

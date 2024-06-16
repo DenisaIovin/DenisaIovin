@@ -26,9 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
     
-        echo "Parola din formular: " . $input_password . "<br>";
-        echo "Parola din baza de date: " . $user['password'] . "<br>";
-    
         if (password_verify($input_password, $user['password'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $user['username'];

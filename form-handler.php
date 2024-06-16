@@ -4,20 +4,17 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-// Activează raportarea erorilor
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Conectare la baza de date
 $servername = "localhost";
 $username = "root";
-$password = "denisa13"; // Schimbă cu parola ta
-$database = "users_db"; // Schimbă cu numele bazei de date
+$password = "denisa13"; 
+$database = "users_db"; 
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Verificare conexiune
 if ($conn->connect_error) {
     die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
 }
@@ -29,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if ($name && $visitor_email && $subject && $message) {
-        // Inserează datele în baza de date
         $sql = "INSERT INTO messages (name, email, subject, message) VALUES ('$name', '$visitor_email', '$subject', '$message')";
 
         if ($conn->query($sql) === TRUE) {
@@ -37,18 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail = new PHPMailer(true);
 
             try {
-                // Configurați setările serverului SMTP
                 $mail->isSMTP();
                 $mail->Host = 'smtp.mail.yahoo.com'; // Host SMTP
                 $mail->SMTPAuth = true;
-                $mail->Username = 'denisaiovin13@yahoo.com'; // Nume utilizator SMTP
-                $mail->Password = 'rjlzuibtcctkzqmc'; // Parolă de aplicație
+                $mail->Username = 'denisaiovin13@yahoo.com'; 
+                $mail->Password = 'rjlzuibtcctkzqmc'; 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                // Destinatar și expeditor
                 $mail->setFrom('denisaiovin13@yahoo.com', 'Mailer');
-                $mail->addAddress('denisaiovin13@yahoo.com'); // Adresa destinatar
+                $mail->addAddress('denisaiovin13@yahoo.com'); 
 
                 // Conținutul emailului
                 $mail->isHTML(true);
@@ -59,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->send();
                 header("Location: contact.php?status=success");
             } catch (Exception $e) {
-                error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+                error_log("Mesajul nu a putut fi trimis.: {$mail->ErrorInfo}");
                 header("Location: contact.php?status=error");
             }
         } else {
@@ -74,6 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-// Închide conexiunea cu baza de date
+
 $conn->close();
 ?>
