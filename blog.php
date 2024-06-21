@@ -1,7 +1,6 @@
 <?php
-session_start(); // Inițializează sesiunea
+session_start(); 
 
-// Conectare la baza de date
 $servername = "localhost";
 $username = "root";
 $password = "denisa13";
@@ -14,7 +13,7 @@ if ($conn->connect_error) {
     die("Conexiunea la baza de date a eșuat: " . $conn->connect_error);
 }
 
-// Obține comentariile din baza de date dacă a fost apăsat butonul "Vezi comentarii"
+// Obține comentariile din baza de date după apăsarea butonului
 $comments = [];
 if (isset($_POST['show_comments'])) {
     $sql = "SELECT * FROM comments ORDER BY created_at DESC";
@@ -112,17 +111,13 @@ $conn->close();
 
     </div>
 
-    <!--container blog-->
     <div class="blog-container">
 
-        <!--box 1-->
         <div class="blog-box">
-            <!--img-->
             <div class="blog-img">
                 <img src="images/totul_despre_pensule.png" alt="Blog">
             </div>
 
-            <!--text-->
             <div class="blog-text">
                 <span>19 Martie 2024 / Totul despre pensule</span>
                 <a href="#" class="blog-title">Ghid complet despre pensulele de machiaj</a>
@@ -132,14 +127,11 @@ $conn->close();
         </div>
 
         
-        <!--box 2-->
         <div class="blog-box">
-            <!--img-->
             <div class="blog-img">
                 <img src="images/îngrijirea_pensulelor.png" alt="Blog">
             </div>
 
-            <!--text-->
             <div class="blog-text">
                 <span>19 Martie 2024 / Îngrijirea pensulelor de machiaj</span>
                 <a href="#" class="blog-title">Îngrijirea pensulelor de machiaj</a>
@@ -150,14 +142,11 @@ $conn->close();
 
 
 
-        <!--box 3-->
         <div class="blog-box">
-            <!--img-->
             <div class="blog-img">
                 <img src="images/alegerea_nuantei_fondului_de_ten.png" alt="Blog">
             </div>
 
-            <!--text-->
             <div class="blog-text">
                 <span>19 Martie 2024 / Nuanța fondului de ten</span>
                 <a href="#" class="blog-title">Cum să alegi corect nuanța și subtonul fondului de ten?</a>
@@ -167,15 +156,12 @@ $conn->close();
         </div>
         <br>
 
-
-        <!--box 4-->
         <div class="blog-box">
-            <!--img-->
+
             <div class="blog-img">
                 <img src="images/greseala_clasica_a_makeup_artistilor.png" alt="Blog">
             </div>
 
-            <!--text-->
             <div class="blog-text">
                 <span>20 Martie 2024 / Greșeala clasică a make-up artiștilor.</span>
                 <a href="#" class="blog-title">Greșeala pe care majoritatea make-up artiștilor o fac!</a>
@@ -203,12 +189,11 @@ $conn->close();
     <p>Trebuie să vă <a href="login.html">autentificați</a> pentru a adăuga comentarii.</p>
     <?php endif; ?>
 
-    <!-- Butonul pentru a vedea comentariile -->
+    <!-- Afișarea comentariilor din baza de date -->
     <form method="POST" action="">
         <button type="submit" name="show_comments" class="done-btn">Vezi comentariile</button>
     </form>
 
-    <!-- Afișare comentarii existente -->
     <?php if (!empty($comments)): ?>
     <section class="comments-list">
         <h3>Comentarii de la utilizatori:</h3>

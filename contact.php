@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-// Verificarea autentificării
 if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] === 'admin' && $_POST['password'] === 'parola') {
     $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = 'admin'; // Setarea numelui de utilizator în sesiune
-    $_SESSION['password'] = 'parola'; // Setarea parolei în sesiune
-    header("Location: pagina_de_start.php"); // Redirecționarea către pagina de start după autentificare
+    $_SESSION['username'] = 'admin'; 
+    $_SESSION['password'] = 'parola'; 
+    header("Location: pagina_de_start.php");
     exit();
 }
 ?>
@@ -113,9 +112,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] 
     <script src="https://mediafiles.botpress.cloud/ecfd2f6e-0d84-4ddb-a0a7-e181f150ec37/webchat/config.js" defer></script>
 
 <?php
-    // Verificăm dacă utilizatorul este autentificat ca admin
     if(isset($_SESSION['loggedin']) && isset($_SESSION['username']) && isset($_SESSION['password']) && $_SESSION['username'] === 'admin' && $_SESSION['password'] === 'parola') {
-        // Dacă utilizatorul este autentificat ca admin, afișăm butonul
         echo '<a href="messages.php" class="MainMore-btn done-btn">Vezi Mesajele</a>';
     }
     ?>

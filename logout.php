@@ -13,10 +13,8 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Distruge sesiunea
 session_destroy();
 
-// Redirecționează utilizatorul către pagina de login
 header("Location: login.html");
 exit;
 ?>

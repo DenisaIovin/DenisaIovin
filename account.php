@@ -111,7 +111,6 @@ $conn->close();
         <p><strong>Nume:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
         <p><strong>Telefon:</strong> <?php echo htmlspecialchars($user['phone']); ?></p>
-        <!-- Adăugați alte informații relevante -->
     </div>
     <div class="account-actions">
         <a href="edit_account.php" class="done-btn">Editează informațiile</a>

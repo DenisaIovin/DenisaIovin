@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user_id) {
     $stmt->bind_param("sssi", $username, $email, $phone, $user_id);
 
     if ($stmt->execute()) {
-        $_SESSION['username'] = $username; // Actualizăm numele de utilizator în sesiune dacă este necesar
-        $_SESSION['email'] = $email; // Actualizăm email-ul în sesiune dacă este necesar
-        $_SESSION['phone'] = $phone; // Actualizăm telefonul în sesiune dacă este necesar
+        $_SESSION['username'] = $username; 
+        $_SESSION['email'] = $email; 
+        $_SESSION['phone'] = $phone; 
         header("Location: account.php?status=success");
         exit;
     } else {

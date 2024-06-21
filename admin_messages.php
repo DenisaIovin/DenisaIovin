@@ -7,7 +7,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 // Verificare rol de admin
 if ($_SESSION['role'] !== 'admin') {
-    // Dacă utilizatorul nu are rol de admin, redirecționează către pagina de cont
     header("Location: account.php");
     exit;
 }
@@ -46,7 +45,6 @@ $result = $conn->query($sql);
 <div class="message-container">
     <?php
     if ($result->num_rows > 0) {
-        // Afiseaza fiecare mesaj
         while ($row = $result->fetch_assoc()) {
             echo "<div class='message'>";
             echo "<p><strong>Nume:</strong> " . htmlspecialchars($row['name']) . "</p>";

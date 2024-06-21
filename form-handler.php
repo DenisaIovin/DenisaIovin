@@ -29,12 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO messages (name, email, subject, message) VALUES ('$name', '$visitor_email', '$subject', '$message')";
 
         if ($conn->query($sql) === TRUE) {
-            // Dacă inserarea în baza de date s-a realizat cu succes, trimite emailul
             $mail = new PHPMailer(true);
 
             try {
                 $mail->isSMTP();
-                $mail->Host = 'smtp.mail.yahoo.com'; // Host SMTP
+                $mail->Host = 'smtp.mail.yahoo.com'; 
                 $mail->SMTPAuth = true;
                 $mail->Username = 'denisaiovin13@yahoo.com'; 
                 $mail->Password = 'rjlzuibtcctkzqmc'; 
@@ -44,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->setFrom('denisaiovin13@yahoo.com', 'Mailer');
                 $mail->addAddress('denisaiovin13@yahoo.com'); 
 
-                // Conținutul emailului
                 $mail->isHTML(true);
                 $mail->Subject = 'New Form Submission';
                 $mail->Body = "User Name: $name.<br>User Email: $visitor_email.<br>User Subject: $subject.<br>User Message: $message.<br>";
